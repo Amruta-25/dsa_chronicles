@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minSetSize(vector<int>& arr) {
+        int n = arr.size();
+        unordered_map<int,int> freq;
+        for(int i =0; i<n; i++){
+            freq[arr[i]]++;
+        }
+        priority_queue<pair<int,int>> maxHeap;
+        for(auto &it: freq){
+            maxHeap.push({it.second,it.first});
+        }
+        int m = 0;
+        int count = 0;
+        while(m<n/2){
+            m = m + maxHeap.top().first;
+            maxHeap.pop();
+            count++;
+        }
+        return count;
+    }
+};
