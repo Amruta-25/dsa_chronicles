@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int count[256] = {0};
+        int maxlength = 0;
+        int start = 0;
+        int end = 0;
+        int n = s.size();
+        if(n==0){
+            return 0;
+        }
+        while(end<n){
+            count[s[end]]++;
+            int c = count[s[end]];
+            cout << start<< " "<<end;
+            
+            if(c>1){
+                while(count[s[end]]>1){
+                    count[s[start]]--;
+                    start++;
+                }
+            }
+            end++;
+            int length = end-start;
+            maxlength = max(maxlength, length);
+            
+        }
+         
+        cout << start<< " "<<end;
+        return maxlength;
+    }
+};
