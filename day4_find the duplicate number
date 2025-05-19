@@ -1,0 +1,34 @@
+class Solution {
+public:
+    // int findDuplicate(vector<int>& nums) {
+    //     sort(nums.begin(), nums.end());
+    //     int n = nums.size();
+    //     int ans = -1;
+    //     for(int i =1; i<n; i++){
+    //         if(nums[i]==nums[i-1]){
+    //             ans = nums[i];
+    //         }
+    //     }
+    //     return ans;
+    // }
+
+    int findDuplicate(vector<int>& nums) {
+        int first = nums[0];
+        int second = nums[0];
+        int n = nums.size();
+        first = nums[first];
+        second = nums[nums[second]];
+        while(first!=second){
+            first = nums[first];
+            second = nums[nums[second]];
+        }
+        // cout << first;
+        first = nums[0];
+        while(first!=second){
+            first = nums[first];
+            second = nums[second];
+        }
+
+        return first;
+    }
+};
